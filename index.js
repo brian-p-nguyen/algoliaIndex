@@ -1,14 +1,17 @@
 import { Storefront } from "@nacelle/storefront-sdk";
 import algoliasearch from "algoliasearch";
+import { config } from "dotenv";
+
+config();
 
 const storefrontClient = Storefront({
-    storefrontEndpoint: 'https://storefront.api.nacelle.com/graphql/v1/spaces/19816841-84ad-43a4-893f-2fa8fee942c7',
-    token: '7efd7cf0-fca8-4f15-8b72-f2e2b0595be2'
+    storefrontEndpoint: process.env.STOREFRONT_ENDPOINT,
+    token: process.env.STOREFRONT_TOKEN
 });
 
 const algoliaClient = algoliasearch(
-    'JA0X9VKM96',
-    '4c3a7c8889a2405c75960ad2492b00b1'
+    process.env.ALGOLIA_APP_ID,
+    process.env.ALGOLIA_API_KEY
 );
 
 const PRODUCTS_QUERY = `
